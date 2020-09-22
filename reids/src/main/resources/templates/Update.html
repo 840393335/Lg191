@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>修改</h1>
+<form  action="up" method="post">
+    <p>账号:<input name="uname" th:value="${q.uname}"> <input name="usid"  type="hidden" th:value="${q.usid}"></p>
+    <p>密码:<input name="upwd" th:value="${q.upwd}"></p>
+    <input type="submit" value="提交">
+</form>
+</body>
+</html>

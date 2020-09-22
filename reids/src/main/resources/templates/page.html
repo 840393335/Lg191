@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en"xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<style>
+    a{
+        text-decoration:none
+    }
+</style>
+<script src="js/jquery-1.8.2.min.js"></script>
+<script>
+    $(function () {
+        $(".sc").click(function () {
+            var sid=$(this).next().val();
+            var node=$(this).parent().parent();
+            if (confirm('是否删除')){
+                $.post("sc",{"sid":sid},function (data) {
+                    if (data==1){
+                        alert('删除成功');
+                        node.remove();
+                    }else{
+                        alert('删除失败')
+                    }
+                })
+            }
+        })
+    })
+</script>
+<body>
+<h1>信息查询</h1>
+<table border="1" width="60%">
+    <thead>
+        <tr>
+        <td>id</td>
+        <td>账号</td>
+        <td>密码</td>
+            <td>操作</td>
+         </tr>
+    </thead>
+    <tbody>
+        <tr th:each="s:${q}">
+            <td><a  th:href="@{'/xg?sid='+${s.usid}}" th:text="${s.usid}"></a></td>
+            <td th:text="${s.uname}"></td>
+            <td th:text="${s.upwd}"></td>
+            <td><a class="sc" href="javascript:void(0)">删除</a><input type="hidden" name="sid" th:value="${s.usid}"></td>
+        </tr>
+    </tbody>
+</table>
+</body>
+</html>
