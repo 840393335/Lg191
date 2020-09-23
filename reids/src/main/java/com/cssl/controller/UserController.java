@@ -21,7 +21,7 @@ public class UserController {
         return  "page";
     }
     @PostMapping("/add")
-    public String ss(  String uname,  String upd){
+    public String ss( String uname,  String upd){
         Uname qq=new Uname();
         qq.setUname(uname);
         qq.setUpwd(upd);
